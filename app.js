@@ -3,20 +3,19 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var Users = require('./models/users');
-var LocalStrategy = require('passport-local').Strategy;
-
-var apiUsersRouter = require('./routes/api/users');
-var apiAuthRouter = require('./routes/api/auth');
-var config = require('./config.dev');
 var mongoose = require('mongoose');
 var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
 var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
 
+var Users = require('./models/users');
+
+var apiUsersRouter = require('./routes/api/users');
+var apiAuthRouter = require('./routes/api/auth');
+var indexRouter = require('./routes/index');
+var usersRouter = require('./routes/users');
+var config = require('./config.dev');
 
 //Test the file
 console.log(config);
@@ -90,7 +89,7 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-module.exports = app;
-
 //Connect to MongoDB
 mongoose.connect(config.mongodb, { useNewUrlParser: true });
+
+module.exports = app;
