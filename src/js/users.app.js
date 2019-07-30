@@ -174,6 +174,25 @@ var usersApp = (function() {
       }
     }
     
+    function editUser(id){
+
+      let uri = `${window.location.origin}/api/users/${id}`;
+      let xhr = new XMLHttpRequest();
+      xhr.open('GET', uri);
+    
+      xhr.setRequestHeader(
+        'Content-Type',
+        'application/json; charset=UTF-8'
+      );
+    
+      xhr.send();
+    
+      xhr.onload = function(){
+        let data = JSON.parse(xhr.response);
+        console.log(data);
+      }
+    }
+    
     return {
       load: function(){
         let hash = window.location.hash;
@@ -188,11 +207,12 @@ var usersApp = (function() {
                 
           case '#view':
             viewUser(hashArray[1]);
-            console.log('VIEW');
+            // console.log('VIEW');
             break;
             
           case '#edit':
-            console.log('EDIT');
+            editUser(hashArray[1]);
+            // console.log('EDIT');
             break;
       
           case '#delete':
