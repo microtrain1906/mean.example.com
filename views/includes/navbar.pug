@@ -21,9 +21,9 @@ nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
         //- if !session.passport.user
         if showLogin
           li.nav-item
-            a.nav-link(href='/auth#login') Login
+            a.nav-link(href='/auth#register') Register
           li.nav-item
-            a.nav-link(href='/auth#register') Register        else
+            a.nav-link(href='/auth#login') Login
         else
           li.nav-item
             a.nav-link(href='/users/app') Users
